@@ -100,7 +100,7 @@ public class DropChanceCommand extends AbstractCommand {
      */
 	private static String calcDropChance(int chance, int currentKC) {
     	//checks if the chance is higher than 0
-    	if(!((chance > 0) || (currentKC > 0))) {
+    	if(!(chance > 0) || !(currentKC > 0)) {
     		return "You have to choose a positive number!";
     	}
     	
