@@ -67,7 +67,8 @@ public class Main
     	
     	try {
     		//which file to load
-    		input = new FileInputStream("config.properties");
+    		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+    		input = classloader.getResourceAsStream("config.properties");
     		
     		//load properties
     		prop.load(input);
