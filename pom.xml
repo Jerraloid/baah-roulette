@@ -27,7 +27,7 @@
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>org.jerraloid.baahroulette.main.Main</mainClass>
+              <mainClass>org.jerraloid.baahroulette.core.Main</mainClass>
             </manifest>
           </archive>
         </configuration>
