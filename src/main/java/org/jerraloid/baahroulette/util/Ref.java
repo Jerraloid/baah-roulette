@@ -81,20 +81,6 @@ public class Ref {
 			"Overload caller"
 	));
 	
-	//misc
-	public static final String[] COMMANDS = {
-			"**help** | **commands** - Shows you a list of all the bot commands.",
-			"**baah** - Baah!",
-			"**setteam** | **update** - Updates the team for PvM randomized roles.",
-			"**team** | **showteam** | **currentteam** - Shows the current team that is set in the bot.",
-			"**addmember** | **add** - Adds a member to the team.",
-			"**removemember** | **remove** - Removes a member from the team.",
-			"**bosses** | **bosslist** - Shows all available bosses compatible with the bot.",
-			"**roles** | **setroles** | **randomroles** | **doroles** - Randomizes PvM roles.",
-			"**callout** - Gives someone a compliment.",
-			"**dropchance** - Calculates for you when you get a drop."
-	};
-	
 	public static final String[] COMPLIMENTS = {
 			"dunce", 
 			"conehead", 

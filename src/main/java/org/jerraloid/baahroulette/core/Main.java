@@ -38,6 +38,7 @@ public class Main
     	loadConfig();
     	
     	if(Ref.TOKEN == "") {
+    		System.out.println("Missing token in the config.properties.");
     		return;
     	}
     	
@@ -73,7 +74,7 @@ public class Main
     		
     		//bind values to variables
     		Ref.TOKEN = prop.getProperty("token");
-    		Ref.PREFIX = prop.getProperty("prefix");
+    		Ref.PREFIX = prop.getProperty("prefix") + " ";
     		
     	} 
     	catch (IOException ex) {

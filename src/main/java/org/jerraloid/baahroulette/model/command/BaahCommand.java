@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jerraloid.baahroulette.model.abstractmodel.AbstractCommand;
+import org.jerraloid.baahroulette.util.Ref;
 
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.MessageChannel;
@@ -27,7 +28,7 @@ public class BaahCommand extends AbstractCommand {
 	 * default constructor
 	 */
 	public BaahCommand() {
-		super("baah", new ArrayList<>(), "Baah!", "Baah.");
+		super("baah", new ArrayList<>(), "Baah!", Ref.PREFIX + "Baah.");
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package org.jerraloid.baahroulette.model.command;
+package org.jerraloid.baahroulette.model.command.pvm;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +29,7 @@ public class SetTeamCommand extends AbstractCommand {
 	 * default constructor
 	 */
 	public SetTeamCommand() {
-		super("setteam", Arrays.asList("update"), "Updates the team for PvM randomized roles.", "setteam [member1, member2, member3...]");
+		super("setteam", Arrays.asList("update"), "Updates the team for PvM randomized roles.", Ref.PREFIX + "setteam [member1, member2, member3...]");
 	}
 	
 	/**
@@ -37,15 +37,33 @@ public class SetTeamCommand extends AbstractCommand {
 	 */
 	@Override
 	public String execute(List<String> parameters, User author, Guild guild, MessageChannel channel) {
-		if(parameters.isEmpty()) {
-			channel.sendMessage("Baah: *(Use the command like this:)* " + super.getUsage()).queue();
+		if(!paramsValid(parameters)) {
+			channel.sendMessage("Baah *(Use the command like this)*: " + super.getUsage()).queue();
 			return "";
 		}
 		
-		setTeam(parameters, guild.toString());
+		setTeam(parameters, guild);
 		channel.sendMessage("Team set!").queue();
 		
 		return "";
+	}
+	
+	/**
+	 * Checks if parameters are valid
+	 * 
+	 * @param parameters Parameters
+	 * @return true or false
+	 */
+	private boolean paramsValid(List<String> parameters) {
+		if(parameters == null) {
+			return false;
+		}
+		
+		if(parameters.isEmpty()) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -54,14 +72,17 @@ public class SetTeamCommand extends AbstractCommand {
      * @param team Team you want to set
      * @param guild For which server?
      */
-    private void setTeam(List<String> newTeam, String guild) {
+    private void setTeam(List<String> newTeam, Guild guild) {
+    	//gets an unique stringvalue of a guild
+    	String guildHash = guild.toString();
+    	
     	//if the discordserver doesn't have a team, make a new one
-    	if(!Ref.bossTeams.containsKey(guild)) {
-    		Ref.bossTeams.put(guild, new ArrayList<>());
+    	if(!Ref.bossTeams.containsKey(guildHash)) {
+    		Ref.bossTeams.put(guildHash, new ArrayList<>());
     	}
     	
     	//gets team
-    	List<String> team = Ref.bossTeams.get(guild);
+    	List<String> team = Ref.bossTeams.get(guildHash);
     	
     	//clears last team
 		team.clear();

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.jerraloid.baahroulette.model.abstractmodel.AbstractCommand;
+import org.jerraloid.baahroulette.util.Ref;
 import org.jerraloid.baahroulette.util.TimeUtil;
 
 import net.dv8tion.jda.core.entities.Guild;
@@ -31,7 +32,7 @@ public class UptimeCommand extends AbstractCommand {
 	 * default constructor
 	 */
 	public UptimeCommand() {
-		super("uptime", new ArrayList<>(), "For how long am I online?", "uptime");
+		super("uptime", new ArrayList<>(), "For how long am I online?", Ref.PREFIX + "uptime");
 	}
 	
 	/**

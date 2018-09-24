@@ -1,6 +1,7 @@
 package org.jerraloid.baahroulette.handler;
 
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,7 @@ import net.dv8tion.jda.core.entities.User;
 public class CommandHandler {
 
 	//command lists
+	private static final List<String> commandHelp = new ArrayList<>();
 	private static final HashMap<String, AbstractCommand> commands = new HashMap<>();
 	private static final HashMap<String, AbstractCommand> commandsAlias = new HashMap<>();
 	
@@ -83,6 +85,7 @@ public class CommandHandler {
 	public static void init() {
 		loadCommands();
 		loadAliases();
+		loadCommandHelp();
 	}
 	
 	/**
@@ -133,6 +136,29 @@ public class CommandHandler {
 	}
 	
 	/**
+	 * loads all information about a command
+	 */
+	private static void loadCommandHelp() {
+		for(AbstractCommand command : commands.values()) {
+			StringBuilder sb = new StringBuilder();
+			
+			//add main command to message
+			sb.append("**" + command.getCommand() + "** ");
+			
+			//add aliases to message
+			for(String alias : command.getAlias()) {
+				sb.append("| **" + alias + "** ");
+			}
+			
+			//add description
+			sb.append("- " + command.getDescription());
+
+			//add them to the list
+			commandHelp.add(sb.toString());
+		}
+	}
+	
+	/**
 	 * Checks if the message is a command
 	 * 
 	 * @param msg message
@@ -166,5 +192,14 @@ public class CommandHandler {
 		
 		//returns null if not exist
 		return null;
+	}
+	
+	/**
+	 * getter for commandhelp
+	 * 
+	 * @return all command descriptions
+	 */
+	public static List<String> getCommandHelp() {
+		return commandHelp;
 	}
 }
