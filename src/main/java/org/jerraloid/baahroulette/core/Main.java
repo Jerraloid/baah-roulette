@@ -1,6 +1,5 @@
 package org.jerraloid.baahroulette.core;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -76,6 +75,10 @@ public class Main
     		//bind values to variables
     		Ref.TOKEN = prop.getProperty("token");
     		Ref.PREFIX = prop.getProperty("prefix") + " ";
+    		
+    		//print prefix & token
+    		System.out.println("Token set to: " + Ref.TOKEN);
+    		System.out.println("Prefix set to: " + Ref.PREFIX);
     		
     	} 
     	catch (IOException ex) {
