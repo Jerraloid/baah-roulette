@@ -59,7 +59,7 @@ public class SetRolesCommand extends AbstractCommand {
 			
 		//checks if theres a team
 		if(!(team.size() > 0)) {
-			channel.sendMessage("There is no team in the queue, please use '" + Ref.PREFIX + "setroles [player1, player2...]'.").queue();
+			channel.sendMessage("There is no team in the queue, please use '" + Ref.PREFIX + "setTeam [player1, player2...]'.").queue();
 			return "";
 		}
 		

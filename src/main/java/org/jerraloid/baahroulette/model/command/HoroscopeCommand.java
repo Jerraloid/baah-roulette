@@ -19,10 +19,10 @@ public class HoroscopeCommand extends AbstractCommand {
 	/**
 	 * custom constructor
 	 * 
-	 * @param command
-	 * @param alias
-	 * @param description
-	 * @param usage
+	 * @param command The commandname
+	 * @param alias The other names to call the command
+	 * @param description What does it do?
+	 * @param usage How to use it?
 	 */
 	public HoroscopeCommand(String command, List<String> alias, String description, String usage) {
 		super(command, alias, description, usage);
