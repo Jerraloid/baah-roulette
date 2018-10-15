@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-import org.jerraloid.baahroulette.model.abstractmodel.AbstractCommand;
+import org.jerraloid.baahroulette.model.AbstractCommand;
 import org.jerraloid.baahroulette.util.Ref;
 import org.reflections.Reflections;
 

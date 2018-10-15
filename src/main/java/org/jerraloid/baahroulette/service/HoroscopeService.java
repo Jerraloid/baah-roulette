@@ -1,6 +1,5 @@
 package org.jerraloid.baahroulette.service;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -31,14 +30,17 @@ public class HoroscopeService {
 	 */
 	public static Horoscope getHoroscope(String horoscopeName) throws ClientProtocolException, IOException {
 		Horoscope horoscope = null;
+		HoroscopeEnum horoscopeEnum = null;
 		
 		//check input
-		if(HoroscopeEnum.getHoroscope(horoscopeName) == null) {
+		try {
+			horoscopeEnum = HoroscopeEnum.valueOf(horoscopeName.toUpperCase());
+		} catch(IllegalArgumentException ex) {
 			return null;
 		}
 		
 		//request params
-		String params = "?sign=" + horoscopeName + "&day=today";
+		String params = "?sign=" + horoscopeEnum.name().toLowerCase() + "&day=today";
 		
 		//HTTP objects
 		HttpClient httpClient = HttpClients.createDefault();
@@ -50,7 +52,6 @@ public class HoroscopeService {
 			
 		if(entity != null) {
 			InputStream inStream = entity.getContent();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
 			
 			try {
 				//read out the response
@@ -63,7 +64,6 @@ public class HoroscopeService {
 				ex.printStackTrace();
 			} finally {
 				//close connections
-				reader.close();
 				inStream.close();
 			}
 		}

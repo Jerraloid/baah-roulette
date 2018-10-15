@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jerraloid.baahroulette.model.AbstractCommand;
 import org.jerraloid.baahroulette.model.Horoscope;
-import org.jerraloid.baahroulette.model.abstractmodel.AbstractCommand;
 import org.jerraloid.baahroulette.service.HoroscopeService;
 import org.jerraloid.baahroulette.util.MiscUtil;
 import org.jerraloid.baahroulette.util.Ref;

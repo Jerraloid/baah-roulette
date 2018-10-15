@@ -3,7 +3,7 @@ package org.jerraloid.baahroulette.model.command;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jerraloid.baahroulette.model.abstractmodel.AbstractCommand;
+import org.jerraloid.baahroulette.model.AbstractCommand;
 import org.jerraloid.baahroulette.util.Ref;
 
 import net.dv8tion.jda.core.entities.Guild;

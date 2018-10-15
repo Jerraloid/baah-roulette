@@ -1,4 +1,4 @@
-package org.jerraloid.baahroulette.model.abstractmodel;
+package org.jerraloid.baahroulette.model;
 
 import java.util.List;
 

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import org.jerraloid.baahroulette.model.abstractmodel.AbstractCommand;
+import org.jerraloid.baahroulette.model.AbstractCommand;
 import org.jerraloid.baahroulette.util.Ref;
 
 import net.dv8tion.jda.core.entities.Guild;

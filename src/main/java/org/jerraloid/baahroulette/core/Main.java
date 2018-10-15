@@ -74,7 +74,7 @@ public class Main
     		
     		//bind values to variables
     		Ref.TOKEN = prop.getProperty("token");
-    		Ref.PREFIX = prop.getProperty("prefix") + " ";
+    		Ref.PREFIX = prop.getProperty("prefix");
     		
     		//print prefix & token
     		System.out.println("Token set to: " + Ref.TOKEN);

@@ -3,7 +3,7 @@ package org.jerraloid.baahroulette.model.command.pvm;
 import java.util.Arrays;
 import java.util.List;
 
-import org.jerraloid.baahroulette.model.abstractmodel.AbstractCommand;
+import org.jerraloid.baahroulette.model.AbstractCommand;
 import org.jerraloid.baahroulette.util.MiscUtil;
 import org.jerraloid.baahroulette.util.Ref;
 
