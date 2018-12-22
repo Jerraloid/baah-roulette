@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import javafx.util.Pair;
+
 /**
  * Referenced variables
  * 
@@ -19,8 +21,43 @@ public class Ref {
 	
 	//Bossing
 	public static HashMap<String, List<String>> bossTeams = new HashMap<>();
+	public static HashMap<String, List<Pair<String, Boolean>>> bossPool = new HashMap<>();
 	
-	//bosses
+	//all bosses
+	public static ArrayList<String> bossPoolList = new ArrayList<>(Arrays.asList(
+			"Vorago",
+			"Solak",
+			"Rots",
+			"Araxxor",
+			"KK",
+			"WildyWyrm",
+			"QBD",
+			"Corp",
+			"Magister",
+			"AOD",
+			"Nex",
+			"Kril",
+			"Graardor",
+			"Zilyana",
+			"Kreearra",
+			"Telos",
+			"Gregorovic",
+			"Twins",
+			"Vindicta",
+			"Helwyr",
+			"Legios",
+			"Kalphite_Queen",
+			"Chaos_Elemental",
+			"KBD",
+			"Giant_Mole",
+			"DKS",
+			"Har-Aken",
+			"Beastmaster",
+			"Yakamaru",
+			"Barrows"
+	));
+	
+	//bosses for random roles
 	public static ArrayList<String> bosslist = new ArrayList<>(Arrays.asList(
 			"bm",
 			"yaka",
