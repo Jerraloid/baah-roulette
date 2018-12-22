@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
-import javafx.util.Pair;
+import java.util.Map;
 
 /**
  * Referenced variables
@@ -21,7 +20,7 @@ public class Ref {
 	
 	//Bossing
 	public static HashMap<String, List<String>> bossTeams = new HashMap<>();
-	public static HashMap<String, List<Pair<String, Boolean>>> bossPool = new HashMap<>();
+	public static HashMap<String, List<Map.Entry<String, Boolean>>> bossPool = new HashMap<>();
 	
 	//all bosses
 	public static ArrayList<String> bossPoolList = new ArrayList<>(Arrays.asList(

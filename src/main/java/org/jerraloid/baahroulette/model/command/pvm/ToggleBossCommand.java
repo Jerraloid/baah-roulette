@@ -1,14 +1,15 @@
 package org.jerraloid.baahroulette.model.command.pvm;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.jerraloid.baahroulette.model.AbstractCommand;
 import org.jerraloid.baahroulette.util.MiscUtil;
 import org.jerraloid.baahroulette.util.Ref;
 
-import javafx.util.Pair;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.User;
@@ -51,11 +52,11 @@ public class ToggleBossCommand extends AbstractCommand {
 		//if the discordserver doesn't have a bosslist yet, make a new one
     	if(!Ref.bossPool.containsKey(guildHash)) {
     		//init list
-    		List<Pair<String, Boolean>> newPool = new ArrayList<>();
+    		List<Map.Entry<String, Boolean>> newPool = new ArrayList<>();
     		
     		//fill bosspool
     		for(String boss : Ref.bossPoolList) {
-    			newPool.add(new Pair<>(boss, true));
+    			newPool.add(new AbstractMap.SimpleEntry<>(boss, true));
     		}
     		
     		//link the list to the guild
@@ -63,7 +64,7 @@ public class ToggleBossCommand extends AbstractCommand {
     	}
 		
 		//get the list
-		List<Pair<String, Boolean>> pool = Ref.bossPool.get(guildHash);
+		List<Map.Entry<String, Boolean>> pool = Ref.bossPool.get(guildHash);
 		
 		//extra check on parameter length
 		if(parameters.size() > pool.size()) {
@@ -80,12 +81,12 @@ public class ToggleBossCommand extends AbstractCommand {
 			boolean exists = false;
 			
 			//look through the bosslist 
-			for(Pair<String, Boolean> item : pool) {
+			for(Map.Entry<String, Boolean> item : pool) {
 				
 				//toggle if item found
 				if (item.getKey().equalsIgnoreCase(bossName)) {
 					Boolean newValue = (item.getValue()) ? false : true;
-					Pair<String, Boolean> newPair = new Pair<String, Boolean>(item.getKey(), newValue);
+					Map.Entry<String, Boolean> newPair = new AbstractMap.SimpleEntry<>(item.getKey(), newValue);
 					pool.remove(pool.indexOf(item));
 					pool.add(newPair);
 					sb.append("Baah *(Toggled the boss named: "+ bossName +" " + ((newValue) ? "**ON**" : "**OFF**") + ")*\n");

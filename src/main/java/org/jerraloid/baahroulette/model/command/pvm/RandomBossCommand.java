@@ -1,14 +1,15 @@
 package org.jerraloid.baahroulette.model.command.pvm;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.jerraloid.baahroulette.model.AbstractCommand;
 import org.jerraloid.baahroulette.util.Ref;
 
-import javafx.util.Pair;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.User;
@@ -43,11 +44,11 @@ public class RandomBossCommand extends AbstractCommand {
 		//if the discordserver doesn't have a bosslist yet, make a new one
     	if(!Ref.bossPool.containsKey(guildHash)) {
     		//init list
-    		List<Pair<String, Boolean>> newPool = new ArrayList<>();
+    		List<Map.Entry<String, Boolean>> newPool = new ArrayList<>();
     		
     		//fill bosspool
     		for(String boss : Ref.bossPoolList) {
-    			newPool.add(new Pair<>(boss, true));
+    			newPool.add(new AbstractMap.SimpleEntry<>(boss, true));
     		}
     		
     		//link the list to the guild
@@ -55,7 +56,7 @@ public class RandomBossCommand extends AbstractCommand {
     	}
     	
     	//get the pool
-    	List<Pair<String, Boolean>> bossPool = Ref.bossPool.get(guildHash);
+    	List<Map.Entry<String, Boolean>> bossPool = Ref.bossPool.get(guildHash);
     	
     	//send message
     	channel.sendMessage("You are gonna do... :\n**" + getRandomBoss(bossPool) + "**").queue();
@@ -69,13 +70,13 @@ public class RandomBossCommand extends AbstractCommand {
 	 * @param bossPool Pool with chosen bosses for that specific discord
 	 * @return Random chosen boss
 	 */
-	private String getRandomBoss(List<Pair<String, Boolean>> bossPool) {
+	private String getRandomBoss(List<Map.Entry<String, Boolean>> bossPool) {
 		//init variables
 		List<String> pool = new ArrayList<>();
 		Random randomizer = new Random();
 		
 		//set bosses in pool
-		for(Pair<String, Boolean> item : bossPool) {
+		for(Map.Entry<String, Boolean> item : bossPool) {
 			if(item.getValue()) pool.add(item.getKey());
 		}
 		

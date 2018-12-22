@@ -1,14 +1,15 @@
 package org.jerraloid.baahroulette.model.command.pvm;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.jerraloid.baahroulette.model.AbstractCommand;
 import org.jerraloid.baahroulette.util.MiscUtil;
 import org.jerraloid.baahroulette.util.Ref;
 
-import javafx.util.Pair;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.User;
@@ -43,11 +44,11 @@ public class ToggledBossesCommand extends AbstractCommand {
 		//if the discordserver doesn't have a bosslist yet, make a new one
     	if(!Ref.bossPool.containsKey(guildHash)) {
     		//init list
-    		List<Pair<String, Boolean>> newPool = new ArrayList<>();
+    		List<Map.Entry<String, Boolean>> newPool = new ArrayList<>();
     		
     		//fill bosspool
     		for(String boss : Ref.bossPoolList) {
-    			newPool.add(new Pair<>(boss, true));
+    			newPool.add(new AbstractMap.SimpleEntry<>(boss, true));
     		}
     		
     		//link the list to the guild
@@ -55,11 +56,11 @@ public class ToggledBossesCommand extends AbstractCommand {
     	}
 		
 		//get the list
-		List<Pair<String, Boolean>> pool = Ref.bossPool.get(guildHash);
+		List<Map.Entry<String, Boolean>> pool = Ref.bossPool.get(guildHash);
 		
 		//creates a list of the bosses
 		StringBuilder sb = new StringBuilder();
-		for(Pair<String, Boolean> boss : pool) {
+		for(Map.Entry<String, Boolean> boss : pool) {
 			sb.append("- " + boss.getKey() + " is toggled **" + ((boss.getValue()) ? "ON" : "OFF") + "**\n");
 		}
 		
