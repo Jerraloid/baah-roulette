@@ -32,17 +32,35 @@ None.
 
 ## Deployment
 
+Make sure maven is installed!
+Make sure Maven is added to environment variables if using Windows
 Build it, host it on pi
+
+### Building (Easy way / With UI)
+0) In IntelliJ: ctrl + E -> Maven -> Lifecycle
+1) click on: clean
+2) click on: install
+3) click on: compile
+4) click on: package
+5) In Explorer go to: <project-path>/target/ -> grab the baahroulette-x.x.x-SNAPSHOT.jar
+
+### Building (With Commandline)
+0) In commandline go to: <project-path>
+1) mvn clean
+2) mvn install
+3) mvn compile
+4) mvn package
+5) In Explorer go to: <project-path>/target/ -> grab the baahroulette-x.x.x-SNAPSHOT.jar
 
 ## Built With
 
-* [Eclipse](http://www.eclipse.org/) - IDE
+* [IntelliJ](https://www.jetbrains.com/idea/) - IDE
 * [Maven](https://maven.apache.org/) - Software project management tool
 * [JDA](https://github.com/DV8FromTheWorld/JDA) - Discordbot Dependency
 
 ## Versioning
 
-I use [Github](https://github.com/) for versioning.
+I use [Github](https://github.com/) for versioning (for now).
 
 ## Authors
 
