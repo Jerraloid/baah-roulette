@@ -7,9 +7,6 @@
   <version>0.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>baahroulette</name>
-  <url>http://maven.apache.org</url>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -26,13 +23,11 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <classpathPrefix>lib/</classpathPrefix>
               <mainClass>org.jerraloid.baahroulette.core.Main</mainClass>
             </manifest>
           </archive>
         </configuration>
       </plugin>
-      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
@@ -50,16 +45,11 @@
   </build>
 
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+    <!-- https://mvnrepository.com/artifact/net.dv8tion/JDA -->
     <dependency>
       <groupId>net.dv8tion</groupId>
       <artifactId>JDA</artifactId>
-      <version>3.7.1_410</version>
+      <version>3.8.3_464</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
 	<dependency>
@@ -80,12 +70,11 @@
 	    <version>1.1.1</version>
 	</dependency>
   </dependencies>
-  
+
   <repositories>
     <repository>
-    <id>jcenter</id>
-    <name>jcenter-bintray</name>
-    <url>http://jcenter.bintray.com</url>
+        <id>jcenter</id>
+        <url>https://jcenter.bintray.com/</url>
     </repository>
   </repositories>
 </project>

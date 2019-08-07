@@ -9,8 +9,5 @@
         <module name="baahroulette" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="baahroulette" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
