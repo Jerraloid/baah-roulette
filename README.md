@@ -33,7 +33,7 @@ None.
 ## Deployment
 
 Make sure maven is installed!
-Make sure Maven is added to environment variables if using Windows
+Make sure Maven is added to environment variables if using Windows  
 Build it, host it on pi
 
 ### Building (Easy way / With UI)
