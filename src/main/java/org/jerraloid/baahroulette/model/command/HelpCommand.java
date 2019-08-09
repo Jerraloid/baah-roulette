@@ -1,5 +1,6 @@
 package org.jerraloid.baahroulette.model.command;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,6 +14,8 @@ import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.User;
 
 public class HelpCommand extends AbstractCommand {
+
+	private final int MAX_MESSAGE_LENGTH = 1000;
 
 	/**
 	 * custom constructor
@@ -52,17 +55,57 @@ public class HelpCommand extends AbstractCommand {
 			
 		} else {
 			StringBuilder sb = new StringBuilder();
-			
+
 			//for each command there is, read out the description
 			for(String description : CommandHandler.getCommandHelp()) {
 				sb.append(description + "\n");
 			}
-			
-			//send all command descriptions
-			MiscUtil.sendEmbedMessage(channel, "Bot Commands", sb.toString());
+
+			String fullMessage = sb.toString();
+			int messageAmount = fullMessage.length() / MAX_MESSAGE_LENGTH;
+
+			//check if the message is too large
+			if (messageAmount > 0) {
+				List<String> messageToSend = new ArrayList<>();
+				messageToSend.add(fullMessage);
+				int index = 0;
+
+				//keep splitting the message
+				while (!messageArrayValid(messageToSend)) {
+					String splitMessage = messageToSend.get(index);
+					int splitPosition = splitMessage.substring(0, (MAX_MESSAGE_LENGTH - 1)).lastIndexOf("\n");
+					messageToSend.set(index, splitMessage.substring(0, splitPosition));
+					messageToSend.add(splitMessage.substring(splitPosition));
+					index++;
+				}
+
+				//send the message in multiple messages
+				for(String messagePart : messageToSend) {
+					MiscUtil.sendEmbedMessage(channel, "Bot Commands", messagePart);
+				}
+			} else {
+				//send command descriptions
+				MiscUtil.sendEmbedMessage(channel, "Bot Commands", fullMessage);
+			}
 		}
 			
 		return "";
+	}
+
+	/**
+	 * checks the message length
+	 *
+	 * @param message
+	 * @return
+	 */
+	private boolean messageArrayValid(List<String> message) {
+		for (String messagePart : message) {
+			if (messagePart.length() >= MAX_MESSAGE_LENGTH) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 	
 	/**

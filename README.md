@@ -55,7 +55,7 @@ Build it, host it on pi
 ## Built With
 
 * [IntelliJ](https://www.jetbrains.com/idea/) - IDE
-* [Maven](https://maven.apache.org/) - Software project management tool
+* [Maven](https://maven.apache.org/) - Dependency manager
 * [JDA](https://github.com/DV8FromTheWorld/JDA) - Discordbot Dependency
 
 ## Versioning
