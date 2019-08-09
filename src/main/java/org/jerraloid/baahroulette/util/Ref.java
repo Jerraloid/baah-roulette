@@ -180,6 +180,7 @@ public class Ref {
 			"tryhard",
 			"elitist",
 			"fadget",
-			"fagit"
+			"fagit",
+			"schapenneuker"
 	};
 }
