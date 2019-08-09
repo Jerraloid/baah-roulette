@@ -43,14 +43,9 @@ public class HoroscopeCommand extends AbstractCommand {
 			channel.sendMessage("No valid parameters found, try: \n" + getUsage()).queue();
 			return "";
 		}
+
 		//gets your horoscope
-		Horoscope horoscope = null;
-		
-		try {
-			 horoscope = HoroscopeService.getHoroscope(parameters.get(0));
-		} catch(IOException ex) {
-			ex.printStackTrace();
-		}
+		Horoscope horoscope = HoroscopeService.getHoroscope(parameters.get(0));
 		
 		//sends message
 		if(horoscope != null) {
@@ -58,8 +53,8 @@ public class HoroscopeCommand extends AbstractCommand {
 			sb.append("**Quote of the day:** " + horoscope.getDescription() + "\n");
 			sb.append("**Mood:** " + horoscope.getMood() + "\n");
 			sb.append("**Today's color:** " + horoscope.getColor() + "\n");
-			sb.append("**Lucky time:** " + horoscope.getLuckyTime() + "\n");
-			sb.append("**Lucky number:** " + horoscope.getLuckyNumber() + "\n");
+			sb.append("**Lucky time:** " + horoscope.getLucky_time() + "\n");
+			sb.append("**Lucky number:** " + horoscope.getLucky_number() + "\n");
 			sb.append("**Your best friends are:** " + horoscope.getCompatibility());
 			
 			MiscUtil.sendEmbedMessage(channel, "Horoscope " + horoscope.getName(), sb.toString());

@@ -62,10 +62,9 @@ public class HelpCommand extends AbstractCommand {
 			}
 
 			String fullMessage = sb.toString();
-			int messageAmount = fullMessage.length() / MAX_MESSAGE_LENGTH;
 
 			//check if the message is too large
-			if (messageAmount > 0) {
+			if (fullMessage.length() >= MAX_MESSAGE_LENGTH) {
 				List<String> messageToSend = new ArrayList<>();
 				messageToSend.add(fullMessage);
 				int index = 0;
